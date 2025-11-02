@@ -55,7 +55,9 @@ void findByColor(list<Goat> trip) {
         return g.get_color() == color;
     });
     if (it != trip.end()) {
-        cout << "found" << it -> get_name() << " of color " << color << endl;
+        cout << "Found " << it -> get_name() << " of color " << color << endl;
+    } else {
+        cout << "No goats found of color " << color << endl;
     }
 }
 
