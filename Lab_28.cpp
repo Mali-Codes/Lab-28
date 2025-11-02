@@ -28,6 +28,23 @@ trip.reverse();
     cout << "Goats reversed.\n";
 }
 
+//3, count by age
+void countByAge(const list<Goat> &trip, int age) {
+    int cap;
+    cout << "Enter age cap: ";
+    cin >> cap;
+
+    int count = 0;
+for (auto it = trip.begin(); it == trip.end(); it++) {
+    if (it->get_age() > cap) {
+        count++;
+    }
+}
+
+    cout << "Number of goats older than " << cap << ": " << count << endl;
+
+}
+
 int main() {
     srand(time(0));
     bool again;
@@ -83,6 +100,10 @@ int main() {
                 reverseGoats(trip);
                 cout << "Goats reversed.\n";
                 break;
+            case 7:
+                cout << "Counting goats by age.\n";
+                countByAge(trip, age);
+                break;
             default:
                 cout << "Invalid selection.\n";
                 break;
@@ -102,6 +123,7 @@ int main_menu() {
     cout << "[4] Quit\n";
     cout << "[5] Sort goats by age\n";
     cout << "[6] Reverse goat order\n";
+    cout << "[7] Count goats older than a certain age\n";
     cout << "Choice --> ";
     int choice;
     cin >> choice;
@@ -156,7 +178,6 @@ int select_goat(list<Goat> trp) {
 
 
 
-//3, count by age
 
 
 //4. find by color
