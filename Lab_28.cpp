@@ -35,7 +35,7 @@ void countByAge(const list<Goat> &trip, int age) {
     cin >> cap;
 
     int count = 0;
-for (auto it = trip.begin(); it == trip.end(); it++) {
+for (auto it = trip.begin(); it != trip.end(); it++) {
     if (it->get_age() > cap) {
         count++;
     }
@@ -44,6 +44,21 @@ for (auto it = trip.begin(); it == trip.end(); it++) {
     cout << "Number of goats older than " << cap << ": " << count << endl;
 
 }
+
+//4. find by color
+void findByColor(list<Goat> trip) {
+    string color;
+    cout << "Enter color to search: ";
+    cin >> color;
+    
+    auto it = find_if(trip.begin(), trip.end(), [color](const Goat &g) {
+        return g.get_color() == color;
+    });
+    if (it != trip.end()) {
+        cout << "found" << it -> get_name() << " of color " << color << endl;
+    }
+}
+
 
 int main() {
     srand(time(0));
@@ -104,6 +119,10 @@ int main() {
                 cout << "Counting goats by age.\n";
                 countByAge(trip, age);
                 break;
+            case 8:
+                cout << "Finding goats by color.\n";
+                findByColor(trip);
+                break;
             default:
                 cout << "Invalid selection.\n";
                 break;
@@ -124,6 +143,7 @@ int main_menu() {
     cout << "[5] Sort goats by age\n";
     cout << "[6] Reverse goat order\n";
     cout << "[7] Count goats older than a certain age\n";
+    cout << "[8] Find goats by color\n";
     cout << "Choice --> ";
     int choice;
     cin >> choice;
@@ -177,10 +197,6 @@ int select_goat(list<Goat> trp) {
 }
 
 
-
-
-
-//4. find by color
 
 
 //5. find oldest goat
