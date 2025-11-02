@@ -14,6 +14,20 @@ void add_goat(list<Goat> &trip, string [], string []);
 void display_trip(list<Goat> trip);
 int main_menu();
 
+void sortGoats(list<Goat> &trip) {
+    trip.sort([](const Goat &a, const Goat &b) {
+        return a.get_age() < b.get_age();
+    });
+    cout << "Goats sorted by age (youngest to oldest).\n";
+}
+
+//2. reverse
+void reverseGoats(list<Goat> &trip) { //going to be using this structure alot
+
+trip.reverse();
+    cout << "Goats reversed.\n";
+}
+
 int main() {
     srand(time(0));
     bool again;
@@ -64,6 +78,11 @@ int main() {
                 sortGoats(trip);
                 cout << "Goats sorted by age.\n";
                 break;
+            case 6:
+                cout << "Reversing goat order.\n";
+                reverseGoats(trip);
+                cout << "Goats reversed.\n";
+                break;
             default:
                 cout << "Invalid selection.\n";
                 break;
@@ -82,6 +101,7 @@ int main_menu() {
     cout << "[3] List goats\n";
     cout << "[4] Quit\n";
     cout << "[5] Sort goats by age\n";
+    cout << "[6] Reverse goat order\n";
     cout << "Choice --> ";
     int choice;
     cin >> choice;
@@ -132,18 +152,8 @@ int select_goat(list<Goat> trp) {
         cin >> input;
     }
     return input;
-
-
-//1. sort
-
-void sortGoats(list<Goat> &trip) {
- trip.sort([](const Goat &a, const Goat &b) {
-        return a.get_age() < b.get_age();
-    });
 }
 
-
-//2. reverse
 
 
 //3, count by age
@@ -162,4 +172,3 @@ void sortGoats(list<Goat> &trip) {
 
 
 //8. age all goats
-}
