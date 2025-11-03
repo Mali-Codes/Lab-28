@@ -204,6 +204,19 @@ int select_goat(list<Goat> trp) {
 //5. find oldest goat
 // working on now
 
+void findOldestGoat(const list<Goat> &trip) {
+    if (trip.empty()) {
+        cout << "No goats in the group.\n";
+        return;
+    }
+
+    auto oldest = max_element
+}
+
+
+
+
+
 //6. find youngest goat
 
 
