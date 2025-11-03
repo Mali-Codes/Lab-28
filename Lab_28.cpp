@@ -114,6 +114,10 @@ void removeByColor(list<Goat> &trip) {
 
 //8. age all goats
 void ageAllGoats(list<Goat> &trip) {
+    for_each(trip.begin(), trip.end(), [](Goat &g) {
+        g.set_age(g.get_age() + 1);
+    });
+    cout << "All goats aged by 1 year.\n";
 
 }
 
@@ -220,7 +224,7 @@ int main_menu() {
     cout << "[9] Find oldest goat\n";
     cout << "[10] Find youngest goat\n";
     cout << "[11] Remove goats by color\n";
-    cout << "[12] Age all goats by 1 year\n";.
+    cout << "[12] Age all goats by 1 year\n";
     cout << "Choice --> ";
     int choice;
     cin >> choice;
