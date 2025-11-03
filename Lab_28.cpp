@@ -103,16 +103,19 @@ void removeByColor(list<Goat> &trip) {
     cin >> color;
 
     int original = trip.size();
-    trip.remove_if((const Goat &g)[color]) {
+    trip.remove_if([color](const Goat &g) {
         return g.get_color() == color;
-    }
+    });
     
     int removed = original - trip.size();
 
     cout << "Remove : " << removed << " goats that are " << color << endl;
 }
 
+//8. age all goats
+void ageAllGoats(list<Goat> &trip) {
 
+}
 
 int main() {
     srand(time(0));
@@ -189,6 +192,10 @@ int main() {
                 cout << "Removing goats by color.\n";
                 removeByColor(trip);
                 break;
+            case 12:
+                cout << "Aging all goats.\n";
+                ageAllGoats(trip);
+                break;
             default:
                 cout << "Invalid selection.\n";
                 break;
@@ -213,6 +220,7 @@ int main_menu() {
     cout << "[9] Find oldest goat\n";
     cout << "[10] Find youngest goat\n";
     cout << "[11] Remove goats by color\n";
+    cout << "[12] Age all goats by 1 year\n";.
     cout << "Choice --> ";
     int choice;
     cin >> choice;
@@ -264,10 +272,3 @@ int select_goat(list<Goat> trp) {
     }
     return input;
 }
-
-
-
-
-
-
-//8. age all goats
