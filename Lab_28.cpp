@@ -62,7 +62,6 @@ void findByColor(list<Goat> trip) {
 }
 
 //5. find oldest goat
-// working on now
 
 void findOldestGoat(const list<Goat> &trip) {
     if (trip.empty()) {
@@ -70,8 +69,8 @@ void findOldestGoat(const list<Goat> &trip) {
         return;
     }
 
-    auto oldest = max_element(trip.begin(), trip.end(), [](const list<Goat> &trip) {
-    return a.get_age() > b.get_age();
+    auto oldest = max_element(trip.begin(), trip.end(), [](const Goat &a, const Goat &b) {
+        return a.get_age() < b.get_age();
     });
 
     cout << "Oldest goat: " << oldest->get_name() 
@@ -79,6 +78,21 @@ void findOldestGoat(const list<Goat> &trip) {
          << ", " << oldest->get_color() << ")\n";
 }
 
+//6. find youngest goat - using structure from oldest goat 
+void findYoungestGoat(const list<Goat> &trip) {
+    if (trip.empty()) {
+        cout << "No goats in the group.\n";
+        return;
+    }
+
+    auto oldest = min_element(trip.begin(), trip.end(), [](const Goat &a, const Goat &b) {
+        return a.get_age() > b.get_age();
+    });
+
+    cout << "Youngest goat: " << oldest->get_name() 
+         << " (age " << oldest->get_age() 
+         << ", " << oldest->get_color() << ")\n";
+}
 
 int main() {
     srand(time(0));
@@ -147,6 +161,10 @@ int main() {
                 cout << "Finding oldest goat.\n";
                 findOldestGoat(trip);
                 break;
+            case 10:
+                cout << "Finding youngest goat.\n";
+                findYoungestGoat(trip);
+                break;
             default:
                 cout << "Invalid selection.\n";
                 break;
@@ -169,6 +187,7 @@ int main_menu() {
     cout << "[7] Count goats older than a certain age\n";
     cout << "[8] Find goats by color\n";
     cout << "[9] Find oldest goat\n";
+    cout << "[10] Find youngest goat\n";
     cout << "Choice --> ";
     int choice;
     cin >> choice;
@@ -221,16 +240,6 @@ int select_goat(list<Goat> trp) {
     return input;
 }
 
-
-
-
-
-
-
-
-
-
-//6. find youngest goat
 
 
 //7. remove by color
