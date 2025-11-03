@@ -85,14 +85,34 @@ void findYoungestGoat(const list<Goat> &trip) {
         return;
     }
 
-    auto oldest = min_element(trip.begin(), trip.end(), [](const Goat &a, const Goat &b) {
-        return a.get_age() > b.get_age();
+    auto youngest = min_element(trip.begin(), trip.end(), [](const Goat &a, const Goat &b) {
+        return a.get_age() < b.get_age();
     });
 
-    cout << "Youngest goat: " << oldest->get_name() 
-         << " (age " << oldest->get_age() 
-         << ", " << oldest->get_color() << ")\n";
+    cout << "Youngest goat: " << youngest->get_name() 
+         << " (age " << youngest->get_age() 
+         << ", " << youngest->get_color() << ")\n";
 }
+
+//7. remove by color
+
+void removeByColor(list<Goat> &trip) {
+    string color;
+    
+    cout << "Enter color to remove: ";
+    cin >> color;
+
+    int original = trip.size();
+    trip.remove_if((const Goat &g)[color]) {
+        return g.get_color() == color;
+    }
+    
+    int removed = original - trip.size();
+
+    cout << "Remove : " << removed << " goats that are " << color << endl;
+}
+
+
 
 int main() {
     srand(time(0));
@@ -165,6 +185,10 @@ int main() {
                 cout << "Finding youngest goat.\n";
                 findYoungestGoat(trip);
                 break;
+            case 11:
+                cout << "Removing goats by color.\n";
+                removeByColor(trip);
+                break;
             default:
                 cout << "Invalid selection.\n";
                 break;
@@ -188,6 +212,7 @@ int main_menu() {
     cout << "[8] Find goats by color\n";
     cout << "[9] Find oldest goat\n";
     cout << "[10] Find youngest goat\n";
+    cout << "[11] Remove goats by color\n";
     cout << "Choice --> ";
     int choice;
     cin >> choice;
@@ -242,7 +267,7 @@ int select_goat(list<Goat> trp) {
 
 
 
-//7. remove by color
+
 
 
 //8. age all goats
