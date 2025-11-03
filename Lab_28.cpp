@@ -61,6 +61,24 @@ void findByColor(list<Goat> trip) {
     }
 }
 
+//5. find oldest goat
+// working on now
+
+void findOldestGoat(const list<Goat> &trip) {
+    if (trip.empty()) {
+        cout << "No goats in the group.\n";
+        return;
+    }
+
+    auto oldest = max_element(trip.begin(), trip.end(), [](const list<Goat> &trip) {
+    return a.get_age() > b.get_age();
+    });
+
+    cout << "Oldest goat: " << oldest->get_name() 
+         << " (age " << oldest->get_age() 
+         << ", " << oldest->get_color() << ")\n";
+}
+
 
 int main() {
     srand(time(0));
@@ -125,6 +143,10 @@ int main() {
                 cout << "Finding goats by color.\n";
                 findByColor(trip);
                 break;
+            case 9:
+                cout << "Finding oldest goat.\n";
+                findOldestGoat(trip);
+                break;
             default:
                 cout << "Invalid selection.\n";
                 break;
@@ -146,6 +168,7 @@ int main_menu() {
     cout << "[6] Reverse goat order\n";
     cout << "[7] Count goats older than a certain age\n";
     cout << "[8] Find goats by color\n";
+    cout << "[9] Find oldest goat\n";
     cout << "Choice --> ";
     int choice;
     cin >> choice;
@@ -201,17 +224,7 @@ int select_goat(list<Goat> trp) {
 
 
 
-//5. find oldest goat
-// working on now
 
-void findOldestGoat(const list<Goat> &trip) {
-    if (trip.empty()) {
-        cout << "No goats in the group.\n";
-        return;
-    }
-
-    auto oldest = max_element
-}
 
 
 
